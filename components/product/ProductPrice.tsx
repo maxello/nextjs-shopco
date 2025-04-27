@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import React from 'react';
 
 const ProductPrice = ({
@@ -36,7 +36,7 @@ const ProductPrice = ({
   }
 
   return (
-    <div className={clsx("flex flex-wrap items-center gap-1.5 lg:gap-2.5", sizeVariants[size], className)} {...props}>
+    <div className={cn("flex flex-wrap items-center gap-1.5 lg:gap-2.5", sizeVariants[size], className)} {...props}>
       {price === discountedPrice ? (
         <span className="text-primary font-bold">{formattedPrice || `$${price}`}</span>
       ) : (
@@ -44,7 +44,7 @@ const ProductPrice = ({
           <span className="text-primary font-bold">{formattedDiscountedPrice || `$${discountedPrice}`}</span>
           <span className="line-through decoration-[0.1rem] text-foreground/40 font-bold">{formattedPrice || `$${price}`}</span>
           {discountType === "PERCENT" && (
-            <span className={clsx("font-medium text-destructive rounded-full bg-destructive/10", sizeBadgeVariants[size])}>-{discountValue}%</span>
+            <span className={cn("font-medium text-destructive rounded-full bg-destructive/10", sizeBadgeVariants[size])}>-{discountValue}%</span>
           )}
         </>
       )}

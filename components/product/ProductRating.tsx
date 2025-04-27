@@ -1,5 +1,4 @@
-// import { cva } from 'class-variance-authority';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import React from 'react';
 
@@ -30,7 +29,7 @@ const ProductRating = ({
   }
 
   return (
-    <div className={clsx("flex items-center flex-wrap gap-1", textSizeVariants[size], className)} {...props}>
+    <div className={cn("flex items-center flex-wrap gap-1", textSizeVariants[size], className)} {...props}>
       {[...Array(ratingInteger)].map((e, i) => (
         <Image key={i} className={`${fullStarSizeVariants[size]} select-none`} src={'/icons/star.svg'} width={25} height={25} alt="star" />
       ))}

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { clsx } from 'clsx';
+import { cn } from '@/lib/utils';
 import { ChevronRight } from "lucide-react";
 
 interface Breadcrumb {
@@ -16,11 +16,11 @@ export default function Breadcrumbs({
   React.ComponentProps<"ul"> & { breadcrumbs: Breadcrumb[] }
 ) {
   return (
-    <ul {...props} className={clsx("flex items-center gap-x-2", className)}>
+    <ul {...props} className={cn("flex items-center gap-x-2", className)}>
       {breadcrumbs.map((breadcrumb, index) => (
         <React.Fragment key={breadcrumb.label}>
           <li
-            className={clsx(
+            className={cn(
               index === breadcrumbs.length - 1 ? 'text-primary' : 'text-foreground',
             )}
           >

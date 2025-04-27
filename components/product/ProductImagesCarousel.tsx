@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import Image from "next/image";
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 
 type PropType = {
   slides: string[]
@@ -53,7 +53,7 @@ const ProductImagesCarousel: React.FC<PropType> = (props) => {
               <button
                 onClick={() => onThumbClick(index)}
                 type="button"
-                className={clsx("relative rounded-2xl bg-secondary border w-full h-full", index === selectedThumbsIndex ? "border-primary" : "border-transparent", isGrabbing ? "cursor-grabbing" : "cursor-grab")}
+                className={cn("relative rounded-2xl bg-secondary border w-full h-full", index === selectedThumbsIndex ? "border-primary" : "border-transparent", isGrabbing ? "cursor-grabbing" : "cursor-grab")}
               >
                 <Image className="top-0 rounded-2xl bottom-0 left-0 right-0 absolute select-none object-cover h-full" src={src} width={200} height={200} alt="" />
               </button>

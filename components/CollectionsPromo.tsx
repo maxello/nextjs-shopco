@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import React from 'react';
 
 const CollectionsPromo = ({
@@ -36,7 +36,7 @@ const CollectionsPromo = ({
           <a 
             href={item.href}
             key={item.label} 
-            className={clsx(i % 5 === 0 || i % 5 === 3 ? 'lg:col-span-9' : 'lg:col-span-15', 'block bg-background bg-right-bottom md:bg-center lg:bg-right-bottom bg-no-repeat md:col-span-12 p-5 md:py-5 md:px-9 rounded-2xl h-[190px] md:h-[289px]')}
+            className={cn(i % 5 === 0 || i % 5 === 3 ? 'lg:col-span-9' : 'lg:col-span-15', 'block bg-background bg-right-bottom md:bg-center lg:bg-right-bottom bg-no-repeat md:col-span-12 p-5 md:py-5 md:px-9 rounded-2xl h-[190px] md:h-[289px]')}
             style={{
               backgroundImage: `url(${item.src})`,
               backgroundSize: 'cover',

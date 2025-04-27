@@ -12,9 +12,13 @@ const ProductListItemSkeleton = () => {
   )
 }
 
-export const ProductListSkeleton = ({ amount = 4 }: { amount?: number }) => {
+export const ProductListSkeleton = ({ amount = 4, cols = "default" }: { amount?: number, cols?: "default" | "md" }) => {
+  const variants = {
+    "default": "md:grid-cols-4",
+    "md": "md:grid-cols-3",
+  }
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto animate-pulse">
+    <div className={`grid grid-cols-2 ${variants[cols]} gap-x-5 gap-y-9 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto animate-pulse`}>
       {Array(amount).fill(true, 0, amount).map((item, ind) => (<ProductListItemSkeleton key={ind} />))}
     </div>
   );
@@ -70,15 +74,28 @@ export const CartSkeleton = () => {
               <div className="flex-grow bg-input rounded-full flex space-x-3 h-12">
                 <div className="h-6 bg-secondary rounded-full" />
               </div>
-              <div className="w-full max-w-[30%] lg:max-w-[26%] h-12 bg-secondary rounded-full"></div>
+              <div className="w-full max-w-[30%] lg:max-w-[26%] h-12 bg-secondary rounded-full" />
             </div>
-            <div className="lg:mb-2 w-full h-13.5 md:h-15 bg-secondary rounded-full"></div>
+            <div className="lg:mb-2 w-full h-13.5 md:h-15 bg-secondary rounded-full" />
           </div>
         </div>
       </div>
     </div>
   )
 }
+
+export const FiltersSkeleton = () => (
+  <div className="flex flex-col w-full gap-8 border border-border rounded-2xl p-5 animate-pulse">
+    <div className="w-[60%] h-7 bg-secondary rounded-md" />
+    {Array(3).fill(true, 0, 3).map((item, index) => (
+      <div key={index} className="py-2 flex w-full justify-between items-center relative after:w-full after:h-[1px] after:absolute after:-top-4 after:bg-border">
+        <div className="w-[60%] h-7 bg-secondary rounded-md" />
+      </div>
+    ))}
+    
+    <div className="mb-2 w-full h-12 bg-secondary rounded-full" />
+  </div>
+)
 
 const ProductImagesCarouselSkeleton = () => {
   return (

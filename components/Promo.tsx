@@ -62,7 +62,7 @@ const Promo = () => {
               </>
             ) : null}
             <div className="-mx-13 md:mx-0">
-              <Image priority onLoadingComplete={() => setIsPromoImageLoaded(true)} className="select-none" src={'/images/promo-img.png'} alt="Find clothes that matches your style" width={672} height={663} />
+              <Image priority onLoad={() => setIsPromoImageLoaded(true)} className="select-none" src={'/images/promo-img.png'} alt="Find clothes that matches your style" width={672} height={663} />
             </div>
           </div>
         </div>

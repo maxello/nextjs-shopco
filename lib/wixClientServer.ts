@@ -1,11 +1,12 @@
 import { OAuthStrategy, createClient } from "@wix/sdk";
 import { collections, products } from "@wix/stores";
-import { orders } from "@wix/ecom";
+// import { orders } from "@wix/ecom";
 import { cookies } from "next/headers";
-import { members } from '@wix/members';
+// import { members } from '@wix/members';
 
 export const wixClientServer = async () => {
   let refreshToken;
+  
   if (typeof window !== 'undefined') {
     try {
       const cookieStore = cookies();
@@ -19,8 +20,8 @@ export const wixClientServer = async () => {
     modules: {
       products,
       collections,
-      orders,
-      members,
+      // orders,
+      // members,
     },
     auth: OAuthStrategy({
       clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,

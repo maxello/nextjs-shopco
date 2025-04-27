@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import AddToCart from "@/components/cart/AddToCart";
 import { Check } from 'lucide-react';
 import Button from "./ui/Button";
-import clsx from "clsx";
+import { cn } from '@/lib/utils';
 
 const CustomizeProducts = ({
   productId,
@@ -62,11 +62,11 @@ const CustomizeProducts = ({
     <>
       <div className="flex flex-col">
       {productOptions.map((option) => (
-        <div className={clsx("flex flex-col gap-2.5 last:border-t py-4 border-b border-border", option.name?.toLocaleLowerCase() === "color" ? "order-1" : "order-2")} key={option.name}>
+        <div className={cn("flex flex-col gap-2.5 last:border-t py-4 border-b border-border", option.name?.toLocaleLowerCase() === "color" ? "order-1" : "order-2")} key={option.name}>
           <strong className="block font-normal">
             {option.name?.toLocaleLowerCase() === "color" ? "Select" : "Choose"} a {option.name}
           </strong>
-          <ul className={clsx("flex items-center flex-wrap", option.name?.toLocaleLowerCase() === "color" ? "gap-3" : "gap-2 mb-2")}>
+          <ul className={cn("flex items-center flex-wrap", option.name?.toLocaleLowerCase() === "color" ? "gap-3" : "gap-2 mb-2")}>
             {option.choices?.map((choice) => {
               const disabled = !isVariantInStock({
                 ...selectedOptions,

@@ -1,75 +1,52 @@
-import { wixClientServer } from "@/lib/wixClientServer";
 import { products } from "@wix/stores";
 import Pagination from "@/components/ui/Pagination";
 import ProductCard from "./ProductCard";
-
-const PRODUCT_PER_PAGE = 8;
+import { SearchParams } from "@/types";
+import { getProducts } from "@/lib/store";
 
 const ProductList = async ({
   categoryId,
-  limit,
+  productsPerPage = 6,
   searchParams,
+  cols = "default",
+  isPaginated
 }: {
   categoryId: string;
-  limit?: number;
-  searchParams?: { 
-    name: string | undefined,
-    type: string | undefined,
-    min: string | undefined,
-    max: string | undefined,
-    page: string | undefined,
-    sort: string | undefined,
-    cat: string | undefined
-   }
+  productsPerPage?: number;
+  cols?: "default" | "md";
+  searchParams?: SearchParams,
+  isPaginated?: boolean
 }) => {
-  const wixClient = await wixClientServer();
-  const productQuery = wixClient.products
-    .queryProducts()
-    .startsWith("name", searchParams?.name || "")
-    .eq("collectionIds", categoryId)
-    .hasSome(
-      "productType",
-      searchParams?.type ? [searchParams.type] : ["physical", "digital"]
-    )
-    .gt("priceData.price", searchParams?.min || 0)
-    .lt("priceData.price", searchParams?.max || 999999)
-    .limit(limit || PRODUCT_PER_PAGE)
-    .skip(
-      searchParams?.page
-        ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
-        : 0
-    );
 
-  // if (searchParams?.sort) {
-  //   const [sortType, sortBy] = searchParams.sort.split(" ");
+  const options = {
+    categoryId,
+    sortType: searchParams?.sortType,
+    sortBy: searchParams?.sortBy,
+    limit: productsPerPage,
+    page: searchParams?.page
+  }
 
-  //   if (sortType === "asc") {
-  //     productQuery.ascending(sortBy);
-  //   }
-  //   if (sortType === "desc") {
-  //     productQuery.descending(sortBy);
-  //   }
-  // }
+  const { items: products, totalPages } = await getProducts(options);
+  // const test = await getProductsHandler();
+  // const currentPage = Number(searchParams?.page) || 1;
+  const variants = {
+    default: "md:grid-cols-4",
+    md: "md:grid-cols-3",
+  }
 
-  const res = await productQuery.find();
-  const products = res.items;
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto">
-        {products.map((product: products.Product) => (
+      <div className={`grid grid-cols-2 ${variants[cols]} gap-x-5 gap-y-9 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto`}>
+        {products?.map((product: products.Product) => (
           <ProductCard
             key={product._id}
             product={product}
           />
         ))}
       </div>
-      {searchParams?.cat || searchParams?.name ? (
-        <Pagination
-          currentPage={res.currentPage || 0}
-          hasPrev={res.hasPrev()}
-          hasNext={res.hasNext()}
-        />
-      ) : null}
+      {isPaginated && totalPages && totalPages > 1 ? (
+        <Pagination totalPages={totalPages} />)
+      : null}
     </div>
   );
 };

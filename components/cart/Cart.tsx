@@ -35,11 +35,9 @@ const Cart = () => {
         window.location.href = redirectSession.fullUrl;
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
-
-  console.log("cart", cart);
 
   const onChangeItemQuantity = useCallback((lineItemId: string, quantity: number) => {
     changeItemQuantity(wixClient, lineItemId, quantity);

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import QuantityInput from "../QuantityInput";
 import { WixClient } from "@/context/wixContext";
-import clsx from "clsx";
+import { cn } from '@/lib/utils';
 
 const AddToCart = ({
   productId,
@@ -80,7 +80,7 @@ const AddToCart = ({
         <Button
           onClick={() => onAddItem(wixClient, productId, variantId, quantity)}
           disabled={isPending || !stockNumber}
-          className={clsx("w-full", isAddedToCart && "animate-wiggle")}
+          className={cn("w-full", isAddedToCart && "animate-wiggle")}
           size={'md'}
         >
           {isAddedToCart ? "Added to Cart" : "Add to Cart"}

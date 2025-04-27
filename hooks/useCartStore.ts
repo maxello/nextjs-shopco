@@ -44,14 +44,12 @@ export const useCartStore = create<CartState>((set) => ({
     set((state) => ({ ...state, isLoading: true, isError: false, error: null }));
     try {
       const cart = await wixClient.currentCart.getCurrentCart();
-      
       set({
         cart: cart || [],
         isLoading: false,
         counter: cart?.lineItems.length || 0,
       });
     } catch (err) {
-      console.log(err, wixClient);
       set((prev) => ({ ...prev, isLoading: false, isError: true, error: (err as Error).message }));
     }
   },
@@ -79,7 +77,6 @@ export const useCartStore = create<CartState>((set) => ({
 
       return {productId, variantId}
     } catch (err) {
-      console.log(err, wixClient);
       set((prev) => ({ ...prev, isPending: false, isError: true, error: (err as Error).message }));
     }
   },
@@ -100,7 +97,6 @@ export const useCartStore = create<CartState>((set) => ({
         isPending: false,
       });
     } catch (err) {
-      console.log(err, wixClient);
       set((prev) => ({ ...prev, isPending: false, isError: true, error: (err as Error).message }));
     }
   },
@@ -115,7 +111,6 @@ export const useCartStore = create<CartState>((set) => ({
         isPending: false,
       });
     } catch (err) {
-      console.log(err, wixClient);
       set((prev) => ({ ...prev, isPending: false, isError: true, error: (err as Error).message }));
     }
   },

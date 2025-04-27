@@ -23,7 +23,7 @@ export default function Home() {
         >
           <h2 className="text-primary text-center font-[family-name:var(--font-integralcf)] uppercase text-[2rem] xl:text-[3rem] leading-[1.2] lg:leading-none mb-8 md:mb-10 xl:mb-15">New Arrivals</h2>
           <Suspense fallback={<ProductListSkeleton />}>
-            <ProductList categoryId={process.env.NEW_ARRIVALS_CATEGORY_ID!} limit={4} />
+            <ProductList categoryId={process.env.NEW_ARRIVALS_CATEGORY_ID!} productsPerPage={4} />
           </Suspense>
           <Button className="max-w-[358px] lg:max-w-[210px] mx-auto" variant="outline">View All</Button>
         </motion.div>
@@ -37,7 +37,10 @@ export default function Home() {
         >
           <h2 className="text-primary text-center font-[family-name:var(--font-integralcf)] uppercase text-[2rem] xl:text-[3rem] leading-[1.2] lg:leading-none mb-8 md:mb-10 xl:mb-15">Top Selling</h2>
           <Suspense fallback={<ProductListSkeleton />}>
-            <ProductList categoryId={process.env.TOP_SELLING_CATEGORY_ID!} limit={4} />
+            <ProductList 
+              categoryId={process.env.TOP_SELLING_CATEGORY_ID!} 
+              productsPerPage={4}
+            />
           </Suspense>
           <Button className="max-w-[358px] lg:max-w-[210px] mx-auto" variant="outline">View All</Button>
         </motion.div>

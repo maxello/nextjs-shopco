@@ -1,6 +1,6 @@
-import clsx from 'clsx'
 import Image from 'next/image'
 import React from 'react'
+import { cn } from '@/lib/utils';
 
 const BrandsList = ({ className }: {className?: string}) => {
   const brands = [
@@ -36,7 +36,7 @@ const BrandsList = ({ className }: {className?: string}) => {
     },
   ]
   return (
-    <div className={clsx('bg-primary text-primary-foreground', className)}>
+    <div className={cn('bg-primary text-primary-foreground', className)}>
       <ul className="flex items-center justify-center lg:justify-between gap-6 container py-8 flex-wrap">
         { brands?.map((brand) => (
           <li key={brand.label} className="h-[1.35rem] lg:h-[1.55rem] xl:h-[2rem] block max-w-full">

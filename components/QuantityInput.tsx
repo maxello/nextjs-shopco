@@ -1,6 +1,6 @@
 import React from 'react';
 import { Plus, Minus } from 'lucide-react';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 
 const QuantityInput = ({
   quantity, 
@@ -16,7 +16,7 @@ const QuantityInput = ({
   size?: 'sm'
 }) => {
   return (
-    <div className={clsx("bg-input rounded-full flex items-center justify-between font-medium", size === "sm" ? "h-9 lg:h-11 min-w-[105px] lg:min-w-[126px]" : "h-11 md:h-13 min-w-[110px] md:min-w-[170px]" )}>
+    <div className={cn("bg-input rounded-full flex items-center justify-between font-medium", size === "sm" ? "h-9 lg:h-11 min-w-[105px] lg:min-w-[126px]" : "h-11 md:h-13 min-w-[110px] md:min-w-[170px]" )}>
       <button
         className="cursor-pointer text-xl disabled:cursor-not-allowed disabled:opacity-20 w-[35%] flex items-center justify-center"
         onClick={() => handleQuantity("d")}

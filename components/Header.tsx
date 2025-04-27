@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import Input from './ui/Input';
 import { ShoppingCart, CircleUserRound, Search, X, Menu } from "lucide-react";
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import { useCartStore } from '@/hooks/useCartStore';
 import { useWixClient } from '@/hooks/useWixClient';
 import { usePathname } from 'next/navigation';
@@ -20,8 +20,8 @@ const Header = () => {
       link: '/'
     },
     {
-      label: 'On Sale',
-      link: '/about'
+      label: 'All Products',
+      link: '/collections/all-products'
     },
     {
       label: 'New Arrivals',
@@ -53,7 +53,7 @@ const Header = () => {
         </div>
       </div>
       <div className="container ">
-      <div className={clsx("flex items-center lg:justify-between gap-4 lg:gap-10 py-4 md:py-6 relative", pathname !== "/" && "border-b border-border")}>
+      <div className={cn("flex items-center lg:justify-between gap-4 lg:gap-10 py-4 md:py-6 relative", pathname !== "/" && "border-b border-border")}>
         <button type="button" onClick={() => setMenuOpened(!menuOpened)} className="relative lg:hidden inline-flex items-center justify-center rounded-md focus:outline-hidden" aria-controls="mobile-menu" aria-expanded="false">
           <span className="absolute -inset-0.5"></span>
           <span className="sr-only">Open main menu</span>
@@ -65,7 +65,7 @@ const Header = () => {
         </button>
         <Link href={'/'} className="block font-[family-name:var(--font-integralcf)] text-[1.575rem] lg:text-[2rem] leading-none pb-2">SHOP.CO</Link>
         {navigation.length > 0 && (
-          <nav className={clsx(menuOpened
+          <nav className={cn(menuOpened
             ? "visible opacity-100 scale-100 ease-out duration-200 border-y border-border lg:border-0 origin-top-right"
             : "invisible opacity-0 scale-95 lg:visible lg:opacity-100 lg:scale-100", "z-10 top-full -translate-y-[1px] lg:translate-y-0 transform inset-x-0 absolute transition lg:top-0 lg:relative")
           }>

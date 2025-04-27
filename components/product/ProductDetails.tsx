@@ -27,7 +27,6 @@ const ProductDetails = async ({ slug }: { slug: string }) => {
   }
 
   const product = products.items[0];
-  console.log("------", product);
 
   const OPTIONS: EmblaOptionsType = {
     containScroll: 'keepSnaps',
