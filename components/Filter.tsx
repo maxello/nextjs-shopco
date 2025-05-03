@@ -8,7 +8,6 @@ const Filter = () => {
   const { replace } = useRouter();
   const sortType = searchParams.get('sortType') || "descending";
   const sortBy = searchParams.get('sortBy') || "lastUpdated";
-
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
@@ -20,6 +19,7 @@ const Filter = () => {
     } else {
       params.set(name, value);
     }
+    params.set("page", "1");
     replace(`${pathname}?${params.toString()}`);
   };
 
@@ -27,7 +27,7 @@ const Filter = () => {
     <select
       name="sort"
       defaultValue={`${sortType} ${sortBy}`}
-      className="py-2 px-4 rounded-2xl text-base font-medium focus:outline-none"
+      className="py-2 text-base font-medium focus:outline-none"
       onChange={handleFilterChange}
     >
       <option value="descending lastUpdated">Newest</option>

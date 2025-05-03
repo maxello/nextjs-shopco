@@ -24,8 +24,8 @@ const Header = () => {
       link: '/collections/all-products'
     },
     {
-      label: 'New Arrivals',
-      link: '/'
+      label: 'Top Selling',
+      link: '/collections/top-selling'
     },
     {
       label: 'Brands',

@@ -123,7 +123,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-background-light">
+      <div className="bg-background-light text-foreground">
         <div className="container py-6 md:py-10 md:flex gap-10 justify-between">
           <div className="lg:max-w-[20%]">
             <Link href={'/'} className="text-primary block font-[family-name:var(--font-integralcf)] text-[1.8rem] md:text-[2.2rem] leading-none mb-3 md:mb-6">SHOP.CO</Link>

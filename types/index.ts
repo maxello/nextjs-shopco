@@ -20,5 +20,14 @@ export type SearchParams = {
   colors?: string,
   sizes?: string,
   sortBy?: SearchParamsSortByProps
-  sortType?: SearchParamsSortTypeProps
+  sortType?: SearchParamsSortTypeProps,
+  min?: string,
+  max?: string
+}
+
+export type FilterStateProps = {
+  sizes: string[];
+  colors: string[];
+  min: number;
+  max: number;
 }

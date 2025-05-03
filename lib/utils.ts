@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getFilterValues = (products: Product[]) => {
+export const getFilterValues = (products: Product[]): FilterProps => {
   const filters: FilterProps = {
     price: {
       min: 0,
@@ -19,35 +19,38 @@ export const getFilterValues = (products: Product[]) => {
     sizes: []
   };
   for (const product of products) {
-    const { productOptions, priceData } = product;
-    if (!productOptions || !priceData?.discountedPrice) return;
+    const { productOptions = [], priceData } = product;
+    //if (!productOptions || !priceData?.discountedPrice) return;
     for (const productOption of productOptions) {
-      const { name, choices } = productOption;
+      const { name, choices = [] } = productOption;
 
-      if (!name || !choices) return;
-      const normalizedName = name.toLowerCase();
+      //if (!name || !choices) return;
+      const normalizedName = name?.toLowerCase();
 
       for (const choice of choices) {
         const { description, value } = choice;
-        if (!description || !value) return;
-        if (normalizedName === "size" && !filters.sizes.some((item) => item.value === choice.value)) {
-          filters.sizes.push({ description, value })
-        }
-        if (normalizedName === "color" && !filters.colors.some((item) => item.value === choice.value)) {
-          filters.colors.push({ description, value })
+        //if (!description || !value) return;
+        if (description && value) {
+          if (normalizedName === "size" && !filters.sizes.some((item) => item.description === choice.description)) {
+            filters.sizes.push({ description, value });
+          }
+          if (normalizedName === "color" && !filters.colors.some((item) => item.description === choice.description)) {
+            filters.colors.push({ description, value })
+          }
         }
       }
     }
-
-    if (!filters.price.min) {
-      filters.price.min = priceData.discountedPrice;
+    if (priceData?.discountedPrice) {
+      if (!filters.price.min) {
+        filters.price.min = priceData.discountedPrice;
+      }
+      filters.price.min = Math.min(filters.price.min, priceData.discountedPrice);
+      filters.price.max = Math.max(filters.price.max, priceData.discountedPrice);
     }
-    filters.price.min = Math.min(filters.price.min, priceData.discountedPrice);
-    filters.price.max = Math.max(filters.price.max, priceData.discountedPrice);
   }
 
   filters.sizes.sort((a, b) => {
-    return availabledSizeNames.indexOf(a.value.toLowerCase()) - availabledSizeNames.indexOf(b.value.toLowerCase())
+    return availabledSizeNames.indexOf(a.value.toLowerCase()) - availabledSizeNames.indexOf(b.value.toLowerCase());
   });
 
   return filters;
@@ -76,3 +79,9 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export const splitPlus = (string: string = '', divider: string = '') => {
+  const a = string.split(divider)
+  if (a[0] == '' && a.length == 1) return [];
+  return a;
+ };

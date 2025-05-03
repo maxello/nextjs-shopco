@@ -70,7 +70,7 @@ const Cart = () => {
           {cart.lineItems.length > 0 ? (
             <div className="flex flex-col md:flex-row gap-5">
             <div className="w-full lg:w-[59%]">
-              <div className="lg:sticky lg:top-[132px] lg:pt-1">
+              <div className="lg:sticky lg:top-[140px]">
                 <div className="flex border border-border p-3 md:p-5 lg:p-6 rounded-[20px] flex-col gap-8 lg:gap-12">
                   {cart.lineItems.map((item) => (
                     <CartItem
@@ -84,7 +84,7 @@ const Cart = () => {
               </div>
             </div>
             <div className="w-full lg:w-[41%] relative">
-              <div className="lg:sticky lg:top-[132px] lg:pt-1">
+              <div className="lg:sticky lg:top-[140px]">
               <div className="border border-border rounded-[20px] p-5 lg:p-6 flex flex-col gap-4 lg:gap-6">
                 <h2 className="text-[1.25rem] lg:text-2xl font-bold text-primary">Order Summary</h2>
                 <ul className="text-base lg:text-xl flex flex-col gap-4">

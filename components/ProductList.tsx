@@ -23,30 +23,41 @@ const ProductList = async ({
     sortType: searchParams?.sortType,
     sortBy: searchParams?.sortBy,
     limit: productsPerPage,
-    page: searchParams?.page
+    page: searchParams?.page,
+    colors: searchParams?.colors,
+    sizes: searchParams?.sizes,
+    min: searchParams?.min,
+    max: searchParams?.max
   }
 
-  const { items: products, totalPages } = await getProducts(options);
-  // const test = await getProductsHandler();
-  // const currentPage = Number(searchParams?.page) || 1;
+  const {items: products, totalCount} = await getProducts(options);
+  const totalPages = Math.ceil(totalCount / productsPerPage);
+  
   const variants = {
     default: "md:grid-cols-4",
-    md: "md:grid-cols-3",
+    md: "lg:grid-cols-3",
   }
 
   return (
     <div>
-      <div className={`grid grid-cols-2 ${variants[cols]} gap-x-5 gap-y-9 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto`}>
-        {products?.map((product: products.Product) => (
-          <ProductCard
-            key={product._id}
-            product={product}
-          />
-        ))}
-      </div>
-      {isPaginated && totalPages && totalPages > 1 ? (
+      { products?.length > 0 ? (
+        <div className={`grid grid-cols-2 ${variants[cols]} gap-x-5 gap-y-9 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto`}>
+          {products?.map((product: products.Product) => (
+            <ProductCard
+              key={product._id}
+              product={product}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center py-10">
+          No products found
+        </div>
+      )}
+      {isPaginated && totalCount > productsPerPage && products.length > 0 ? (
         <Pagination totalPages={totalPages} />)
       : null}
+      
     </div>
   );
 };

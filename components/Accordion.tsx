@@ -4,11 +4,19 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronUp } from 'lucide-react';
 
-const Accordion = ({ label, children }: {label: string, children: React.ReactElement}) => {
-  const [expanded, setExpanded] = useState(false);
+const Accordion = ({ 
+  label, 
+  isOpened = false,
+  children 
+}: {
+  label: string, 
+  isOpened?: boolean, 
+  children: React.ReactElement
+}) => {
+  const [expanded, setExpanded] = useState(isOpened);
 
   return (
-    <div className="relative after:w-full after:h-[1px] after:absolute after:-top-4 after:bg-border">
+    <div className="relative after:w-full first:after:h-0 after:h-[1px] after:absolute after:-top-4 after:bg-border">
       <motion.button
         initial={false}
         onClick={() => setExpanded((prev) => !prev)}

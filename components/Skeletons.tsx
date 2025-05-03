@@ -53,7 +53,7 @@ export const CartSkeleton = () => {
         </div>
       </div>
       <div className="w-full lg:w-[41%] relative">
-        <div className="lg:sticky lg:top-[132px] lg:pt-1">
+        <div className="lg:sticky lg:top-[140px]">
           <div className="border border-border rounded-[20px] p-5 lg:p-6 flex flex-col gap-4 lg:gap-6">
             <div className="w-1/2 h-7 lg:h-8 bg-secondary rounded-md" />
             <ul className="flex flex-col gap-4">
@@ -124,7 +124,7 @@ export const ProductDetailsSkeleton = () => {
     <div className="animate-pulse">
       <div className="w-[50%] lg:w-[20%] mb-6 md:mb-7 bg-secondary h-6 rounded-md"></div>
       <div className="relative flex flex-col lg:flex-row gap-10">
-        <div className="w-full lg:w-1/2 lg:sticky lg:top-[132px] h-max lg:pt-1">
+        <div className="w-full lg:w-1/2 lg:sticky lg:top-[140px] h-max">
           <ProductImagesCarouselSkeleton />
         </div>
         <div className="w-full lg:w-1/2 flex flex-col">

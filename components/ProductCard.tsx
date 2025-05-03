@@ -14,7 +14,7 @@ const ProductCard = ({
     <Link href={`/product/${product.slug}`} className="flex flex-col">
       <div className="aspect-square rounded-2xl bg-secondary mb-2 lg:mb-3.5">
         <div className="w-full h-full overflow-hidden relative rounded-2xl">
-          <Image className="w-full h-full absolute object-cover z-10 hover:opacity-0 transition-opacity easy duration-500" src={product.media?.mainMedia?.image?.url || "/images/product.png"} alt={product?.name || "Product image"} width={300} height={300} />
+          <Image className="w-full h-full absolute object-cover z-1 hover:opacity-0 transition-opacity easy duration-500" src={product.media?.mainMedia?.image?.url || "/images/product.png"} alt={product?.name || "Product image"} width={300} height={300} />
           {product.media?.items && (
             <Image
               src={product.media?.items[1]?.image?.url || "/images/product.png"}

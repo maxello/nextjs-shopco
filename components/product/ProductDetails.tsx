@@ -36,7 +36,7 @@ const ProductDetails = async ({ slug }: { slug: string }) => {
       '(min-width: 768px)': { axis: 'y' }
     }
   }
-  // const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+  
   const SLIDES = product.media?.items?.map((item) => {
     return item?.image?.url;
   }).filter((item) => item !== undefined) || [];
@@ -55,7 +55,7 @@ const ProductDetails = async ({ slug }: { slug: string }) => {
     <>
       <Breadcrumbs className="mb-6 md:mb-7" breadcrumbs={breadcrumbs} />
       <div className="relative flex flex-col lg:flex-row gap-10">
-        <div className="w-full lg:w-1/2 lg:sticky lg:top-[132px] h-max lg:pt-1">
+        <div className="w-full lg:w-1/2 lg:sticky lg:top-[140px] h-max">
           <ProductImagesCarousel slides={SLIDES} options={OPTIONS} />
         </div>
         <div className="w-full lg:w-1/2 flex flex-col">
@@ -79,7 +79,9 @@ const ProductDetails = async ({ slug }: { slug: string }) => {
               }}
             ></div>
           )}
-          {product.variants && product.productOptions ? (
+          { product?.stock?.quantity ? (
+            <>
+              {product.variants && product.productOptions ? (
             <CustomizeProducts
               productId={product._id!}
               variants={product.variants}
@@ -92,6 +94,13 @@ const ProductDetails = async ({ slug }: { slug: string }) => {
               stockNumber={product.stock?.quantity || 0}
             />
           )}
+            </>
+          ) : (
+            <div className="text-destructive text-lg font-medium">Product is out of stock</div>
+          )}
+
+          
+
           {/* <Suspense fallback="Loading...">
               <Reviews productId={product._id!} />
             </Suspense> */}
