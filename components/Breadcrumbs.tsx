@@ -16,7 +16,7 @@ export default function Breadcrumbs({
   React.ComponentProps<"ul"> & { breadcrumbs: Breadcrumb[] }
 ) {
   return (
-    <ul {...props} className={cn("flex items-center gap-x-2", className)}>
+    <ul {...props} className={cn("flex items-center gap-x-2 text-sm md:text-base", className)}>
       {breadcrumbs.map((breadcrumb, index) => (
         <React.Fragment key={breadcrumb.label}>
           <li

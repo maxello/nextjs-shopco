@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { products } from "@wix/stores";
-import ProductPrice from './product/ProductPrice';
-import ProductRating from './product/ProductRating';
+import ProductPrice from './ProductPrice';
+import ProductRating from './ProductRating';
 
 const ProductCard = ({
   product

@@ -1,5 +1,5 @@
 import BrandsList from "@/components/BrandsList";
-import ProductList from "@/components/ProductList";
+import ProductList from "@/components/product/ProductList";
 import CollectionsPromo from "@/components/CollectionsPromo";
 import Promo from "@/components/Promo";
 import Reviews from "@/components/Reviews";

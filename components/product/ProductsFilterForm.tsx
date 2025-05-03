@@ -1,14 +1,14 @@
 "use client";
 
-import Button from './ui/Button';
-import Accordion from './Accordion';
+import Button from '@/components/ui/Button';
+import Accordion from '@/components/Accordion';
 import { Check, SlidersHorizontal, X } from 'lucide-react';
 import React, { useCallback, useEffect, useState, useTransition } from 'react'
 import { FilterItemProps, FilterProps, FilterStateProps } from '@/types';
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import MultiRangeSlider from "multi-range-slider-react";
 import { cn, splitPlus } from '@/lib/utils';
-import ResetFilters from './ResetFilters';
+import ResetFilters from '@/components/ResetFilters';
 
 const initialState = {
   sizes: [],
@@ -142,7 +142,7 @@ const ProductsFilterForm = ({filterOptions, name}: {filterOptions: FilterProps, 
 
   return (
     <>
-    <div className="flex items-center justify-between md:hidden mb-3">
+    <div className="flex items-center justify-between md:hidden mb-2">
       <h1 className="text-2xl xl:text-[2rem] font-bold text-primary">{name}</h1>
       <div className="flex items-center gap-2">
         {isFilterStateDirty ? <ResetFilters onResetFilters={handleResetFilters} /> : null}

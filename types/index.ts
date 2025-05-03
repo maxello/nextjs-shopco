@@ -22,8 +22,13 @@ export type SearchParams = {
   sortBy?: SearchParamsSortByProps
   sortType?: SearchParamsSortTypeProps,
   min?: string,
-  max?: string
+  max?: string,
+  name?: string,
+  limit?: number
 }
+
+export type OptionsParams = SearchParams & { limit?: number }
+
 
 export type FilterStateProps = {
   sizes: string[];

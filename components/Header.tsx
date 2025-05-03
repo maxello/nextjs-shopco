@@ -1,12 +1,12 @@
 "use client";
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import Input from './ui/Input';
 import { ShoppingCart, CircleUserRound, Search, X, Menu } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { useCartStore } from '@/hooks/useCartStore';
 import { useWixClient } from '@/hooks/useWixClient';
 import { usePathname } from 'next/navigation';
+import SearchBar from './SearchBar';
 
 type NavigationProps = {
   label: string;
@@ -83,10 +83,11 @@ const Header = () => {
             </div>
           </nav>
         )}
-        <label htmlFor="search-input" className="hidden flex-grow bg-input rounded-full lg:flex space-x-3 py-3 px-4">
+        <SearchBar />
+        {/* <label htmlFor="search-input" className="hidden flex-grow bg-input rounded-full lg:flex space-x-3 py-3 px-4">
           <Search strokeWidth={2.25} className="text-muted-foreground" />
           <Input type="text" id="search-input" placeholder="Search for products..." />
-        </label>
+        </label> */}
         <div className="flex items-center gap-x-3.5 w-full lg:w-auto justify-end">
           <button type="button" onClick={() => setSearchOpened(!searchOpened)} className="relative lg:hidden inline-flex items-center justify-center rounded-md focus:outline-hidden" aria-controls="mobile-menu" aria-expanded="false">
             <span className="absolute -inset-0.5"></span>

@@ -1,26 +1,13 @@
-import { SearchParamsSortByProps, SearchParamsSortTypeProps } from "@/types";
+import { OptionsParams } from "@/types";
 import { wixClientServer } from "@/lib/wixClientServer";
-
-type ProductOptionsProps = {
-  categoryId: string;
-  sortType?: SearchParamsSortTypeProps;
-  sortBy?: SearchParamsSortByProps;
-  limit?: number;
-  page?: string;
-  colors?: string;
-  sizes?: string;
-  max?: string;
-  min?: string;
-};
 
 export const getCollectionBySlug = async (slug: string) => {
   const wixClient = await wixClientServer();
   return wixClient.collections.getCollectionBySlug(slug);
 }
 
-export const getProducts = async (options: ProductOptionsProps) => {
+export const getProducts = async (categoryId: string, options: OptionsParams) => {
   const {
-    categoryId,
     sortType = "descending",
     sortBy = "lastUpdated",
     limit = 0,
@@ -28,16 +15,18 @@ export const getProducts = async (options: ProductOptionsProps) => {
     colors,
     sizes,
     min,
-    max
+    max,
+    name = ""
   } = options;
   const wixClient = await wixClientServer();
   try {
     const productQuery = wixClient.products
       .queryProducts()
+      .startsWith('name', name.toLowerCase())
       .eq("collectionIds", categoryId)
       .gt("priceData.price", min || 0)
       .le("priceData.price", max || 999999)
-
+      
     const result = await productQuery[sortType](sortBy)
       // .limit(limit)
       // .skip(page ? (parseInt(page) - 1) * limit : 0)

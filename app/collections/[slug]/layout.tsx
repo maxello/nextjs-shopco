@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductsFilter from "@/components/ProductsFilter";
+import ProductsFilter from "@/components/product/ProductsFilter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 // import { wixClientServer } from "@/lib/wixClientServer";
 import { Suspense } from "react";
@@ -26,8 +26,8 @@ export default async function CollectionLayout({
     },
   ]
   return (
-    <div className="container py-6 mb-6 lg:mb-12">
-      <Breadcrumbs className="mb-6 md:mb-7" breadcrumbs={breadcrumbs} />
+    <div className="container py-5 md:py-6 mb-6 lg:mb-12">
+      <Breadcrumbs className="mb-2.5 md:mb-7" breadcrumbs={breadcrumbs} />
       <div className="md:flex flex-start gap-5">
         {category?.collection?._id && category?.collection?.name && (
           <div className="md:w-[50%] lg:w-[45%] xl:w-[32%]">

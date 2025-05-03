@@ -1,7 +1,6 @@
 import React from 'react';
 import { wixClientServer } from '@/lib/wixClientServer';
 import { getFilterValues } from '@/lib/utils';
-
 import ProductsFilterForm from './ProductsFilterForm';
 
 const ProductsFilter = async ({ categoryId, name }: { categoryId: string, name: string }) => {

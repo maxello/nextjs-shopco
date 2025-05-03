@@ -1,4 +1,4 @@
-import ProductList from "@/components/ProductList";
+import ProductList from "@/components/product/ProductList";
 import { ProductListSkeleton } from "@/components/Skeletons";
 import { Suspense } from "react";
 // import { wixClientServer } from "@/lib/wixClientServer";
@@ -21,7 +21,7 @@ const CollectionPage = async ({
   
   return (
     <>
-      <div className="md:flex justify-between items-center mb-2">
+      <div className="md:flex justify-between items-center mb-4.5 md:mb-2">
         <h1 className="text-2xl xl:text-[2rem] font-bold text-primary mb-1.5 hidden md:block">{category?.collection?.name}</h1>
         <div className="xl:flex items-center gap-3">
           {/* <div>Showing 1-10 of {category.collection?.numberOfProducts} Products</div> */}

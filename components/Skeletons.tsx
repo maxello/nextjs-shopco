@@ -15,7 +15,7 @@ const ProductListItemSkeleton = () => {
 export const ProductListSkeleton = ({ amount = 4, cols = "default" }: { amount?: number, cols?: "default" | "md" }) => {
   const variants = {
     "default": "md:grid-cols-4",
-    "md": "md:grid-cols-3",
+    "md": "lg:grid-cols-3",
   }
   return (
     <div className={`grid grid-cols-2 ${variants[cols]} gap-x-5 gap-y-9 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto animate-pulse`}>
@@ -85,7 +85,12 @@ export const CartSkeleton = () => {
 }
 
 export const FiltersSkeleton = () => (
-  <div className="flex flex-col w-full gap-8 border border-border rounded-2xl p-5 animate-pulse">
+  <>
+    <div className="flex items-center justify-between md:hidden mb-2">
+      <div className="w-1/2 h-8 bg-secondary rounded-md" />
+      <div className="h-8 w-8 bg-secondary rounded-full" />
+    </div>
+    <div className="hidden md:flex flex-col w-full gap-8 border border-border rounded-2xl p-5 animate-pulse">
     <div className="w-[60%] h-7 bg-secondary rounded-md" />
     {Array(3).fill(true, 0, 3).map((item, index) => (
       <div key={index} className="py-2 flex w-full justify-between items-center relative after:w-full after:h-[1px] after:absolute after:-top-4 after:bg-border">
@@ -95,6 +100,8 @@ export const FiltersSkeleton = () => (
     
     <div className="mb-2 w-full h-12 bg-secondary rounded-full" />
   </div>
+  </>
+  
 )
 
 const ProductImagesCarouselSkeleton = () => {

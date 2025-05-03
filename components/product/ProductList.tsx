@@ -19,7 +19,6 @@ const ProductList = async ({
 }) => {
 
   const options = {
-    categoryId,
     sortType: searchParams?.sortType,
     sortBy: searchParams?.sortBy,
     limit: productsPerPage,
@@ -27,10 +26,11 @@ const ProductList = async ({
     colors: searchParams?.colors,
     sizes: searchParams?.sizes,
     min: searchParams?.min,
-    max: searchParams?.max
+    max: searchParams?.max,
+    name: searchParams?.name
   }
 
-  const {items: products, totalCount} = await getProducts(options);
+  const {items: products, totalCount} = await getProducts(categoryId, options);
   const totalPages = Math.ceil(totalCount / productsPerPage);
   
   const variants = {
@@ -41,7 +41,7 @@ const ProductList = async ({
   return (
     <div>
       { products?.length > 0 ? (
-        <div className={`grid grid-cols-2 ${variants[cols]} gap-x-5 gap-y-9 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto`}>
+        <div className={`grid grid-cols-2 ${variants[cols]} gap-x-5 gap-y-5.5 md:gap-y-9 mb-6 md:mb-9 max-w-[500px] md:max-w-full mx-auto`}>
           {products?.map((product: products.Product) => (
             <ProductCard
               key={product._id}
