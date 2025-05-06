@@ -6,7 +6,7 @@ import {
   usePrevNextButtons
 } from '@/components/ui/EmblaCarouselArrowButtons';
 import useEmblaCarousel from 'embla-carousel-react';
-import Image from 'next/image';
+import ReviewItem from './review/ReviewItem';
 type PropType = {
   slides: {
     name: string,
@@ -36,23 +36,7 @@ const ReviewCarousel: React.FC<PropType> = (props) => {
         <div className="flex -ml-[1rem] touch-pan-y">
           {slides.map((elem, index) => (
             <div className="select-none transform-3d grow-0 shrink-0 basis-[100%] min-w-0 pl-[1rem] sm:basis-[50%] md:basis-[33.33%]" key={index}>
-              <div className="border border-border rounded-2xl h-full p-5 lg:px-8 lg:py-6">
-                { elem.rating && (
-                  <div className="flex items-center gap-x-1.5 mb-2.5 lg:mb-4">
-                    {[...Array(Math.floor(elem.rating))].map((e, i) => (
-                      <Image key={i} className="select-none w-[1.25rem] lg:w-[1.4375rem] aspect-square" src={'/icons/star.svg'} width={23} height={23} alt="star" />
-                    ))}
-                    {elem.rating > Math.floor(elem.rating) && (
-                      <Image className="select-none" src={'/icons/star-half.svg'} width={11} height={23} alt="half-star" />
-                    )}
-                  </div>
-                )}
-                <div className="flex items-center mb-2">
-                  <strong className="text-primary block font-bold text-base lg:text-xl mr-1.5">{elem.name}</strong>
-                  <Image className="select-none max-w-[1rem] md:max-w-full" src={'/icons/review-check.svg'} width={19} height={19} alt="check" />
-                </div>
-                <p className="text-md leading-[1.35]">{elem.text}</p>
-              </div>
+              <ReviewItem rating={elem.rating} text={elem.text} name={elem.name} />
             </div>
           ))}
         </div>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.1.12",
     "@wix/ecom": "^1.0.1027",
     "@wix/members": "^1.0.213",
     "@wix/sdk": "^1.15.16",

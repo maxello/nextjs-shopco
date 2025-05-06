@@ -20,22 +20,22 @@ export const getFilterValues = (products: Product[]): FilterProps => {
   };
   for (const product of products) {
     const { productOptions = [], priceData } = product;
-    //if (!productOptions || !priceData?.discountedPrice) return;
-    for (const productOption of productOptions) {
-      const { name, choices = [] } = productOption;
+    console.log("product", product);
+    if (product.stock?.quantity && product.stock?.quantity > 0) {
+      for (const productOption of productOptions) {
+        const { name, choices = [] } = productOption;
 
-      //if (!name || !choices) return;
-      const normalizedName = name?.toLowerCase();
+        const normalizedName = name?.toLowerCase();
 
-      for (const choice of choices) {
-        const { description, value } = choice;
-        //if (!description || !value) return;
-        if (description && value) {
-          if (normalizedName === "size" && !filters.sizes.some((item) => item.description === choice.description)) {
-            filters.sizes.push({ description, value });
-          }
-          if (normalizedName === "color" && !filters.colors.some((item) => item.description === choice.description)) {
-            filters.colors.push({ description, value })
+        for (const choice of choices) {
+          const { description, value } = choice;
+          if (description && value) {
+            if (normalizedName === "size" && !filters.sizes.some((item) => item.description === choice.description)) {
+              filters.sizes.push({ description, value });
+            }
+            if (normalizedName === "color" && !filters.colors.some((item) => item.description === choice.description)) {
+              filters.colors.push({ description, value })
+            }
           }
         }
       }

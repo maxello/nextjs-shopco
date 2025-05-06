@@ -30,6 +30,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --animate-wiggle: scale 0.5s ease-in-out infinite;
   --animate-underline: underline 0.5s ease-out;
+  --animate-move: move 5s linear infinite;
 }
 
 .container {
@@ -89,6 +90,20 @@ body {
   }
   50% {
     transform: scale(1.05);
+  }
+}
+
+@keyframes move {
+  0%,
+  50%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1%);
+  }
+  75% {
+    transform: translateX(1%);
   }
 }
 

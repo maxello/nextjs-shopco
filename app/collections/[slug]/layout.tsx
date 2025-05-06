@@ -15,7 +15,7 @@ export default async function CollectionLayout({
   //const wixClient = await wixClientServer();
   const slug = (await params).slug;
   const category = await getCollectionBySlug(slug);
-  
+  console.log(category);
   const breadcrumbs = [
     {
       label: 'Home',

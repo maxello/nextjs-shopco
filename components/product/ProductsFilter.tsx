@@ -11,9 +11,12 @@ const ProductsFilter = async ({ categoryId, name }: { categoryId: string, name: 
   const result = await productQuery.find();
   const products = result.items || [];
   const filterOptions = getFilterValues(products);
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
   return (
-    <ProductsFilterForm filterOptions={filterOptions} name={name} />
+    <>
+      {products.length > 1 ? (
+        <ProductsFilterForm filterOptions={filterOptions} name={name} />
+      ) : null}
+    </>
   )
 }
 

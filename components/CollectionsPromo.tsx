@@ -10,22 +10,22 @@ const CollectionsPromo = ({
     {
       label: "Casual",
       src: "/images/collection-img-1.png",
-      href: "/"
+      href: "/collections/casual"
     },
     {
       label: "Formal",
       src: "/images/collection-img-2.png",
-      href: "/"
+      href: "/collections/formal"
     },
     {
       label: "Party",
       src: "/images/collection-img-3.png",
-      href: "/"
+      href: "/collections/party"
     },
     {
       label: "Gym",
       src: "/images/collection-img-4.png",
-      href: "/"
+      href: "/collections/gym"
     }
   ]
   return (

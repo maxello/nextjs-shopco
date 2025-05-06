@@ -37,7 +37,7 @@ const BrandsList = ({ className }: {className?: string}) => {
   ]
   return (
     <div className={cn('bg-primary text-primary-foreground', className)}>
-      <ul className="flex items-center justify-center lg:justify-between gap-6 container py-8 flex-wrap">
+      <ul className="flex items-center justify-center lg:justify-between gap-6 container py-8 flex-wrap animate-move duration-1000">
         { brands?.map((brand) => (
           <li key={brand.label} className="h-[1.35rem] lg:h-[1.55rem] xl:h-[2rem] block max-w-full">
             <Image 

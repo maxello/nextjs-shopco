@@ -14,7 +14,8 @@ const initialState = {
   sizes: [],
   colors: [],
   min: 0,
-  max: 0
+  max: 0,
+  name: ""
 }
 
 const ProductsFilterForm = ({filterOptions, name}: {filterOptions: FilterProps, name: string}) => {
@@ -42,11 +43,13 @@ const ProductsFilterForm = ({filterOptions, name}: {filterOptions: FilterProps, 
     const maxPrice = searchParams.get("max");
     const min = typeof minPrice === "string" && minPrice.length > 0 ? +(minPrice.trim()) : filterOptions.price.min;
     const max = typeof maxPrice === "string" && maxPrice.length > 0 ? +(maxPrice.trim()) : filterOptions.price.max;
+    const name = searchParams.get("name") || "";
 
     const isDirty = sizes.length > 0 
     || colors.length > 0
     || !!(min && min !== filterOptions?.price.min)
-    || !!(max && max !== filterOptions?.price.max);
+    || !!(max && max !== filterOptions?.price.max)
+    || !!(name && name.length > 0);
     setIsFilterStateDirty(isDirty);
 
     setFilterState((prev) => {
@@ -54,8 +57,9 @@ const ProductsFilterForm = ({filterOptions, name}: {filterOptions: FilterProps, 
         ...prev,
         sizes,
         colors,
-        min: min,
-        max: max
+        min,
+        max,
+        name
       }
     });
   }, [searchParams, filterOptions]);

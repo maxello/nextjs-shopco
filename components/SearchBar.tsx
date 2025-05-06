@@ -8,9 +8,13 @@ const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if(searchQuery) {
+      setSearchQuery("");
+      inputRef.current?.blur();
       router.push(`/collections/all-products?name=${searchQuery}`)
     }
   };
@@ -32,7 +36,7 @@ const SearchBar = () => {
     >
       <label htmlFor="search-input" className="w-full bg-input rounded-full flex space-x-3 py-3 px-4">
         <Search strokeWidth={2.25} className="text-muted-foreground" />
-        <Input type="text" id="search-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onKeyDown={(e) => handleEnter(e)} placeholder="Search for products..." />
+        <Input ref={inputRef} type="text" id="search-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onKeyDown={(e) => handleEnter(e)} placeholder="Search for products..." />
       </label>
     </form>
   );

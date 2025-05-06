@@ -16,20 +16,20 @@ type NavigationProps = {
 const Header = () => {
   const navigation: NavigationProps[] = [
     {
-      label: 'Shop',
-      link: '/'
+      label: 'About',
+      link: '/about'
     },
     {
       label: 'All Products',
       link: '/collections/all-products'
     },
     {
-      label: 'Top Selling',
-      link: '/collections/top-selling'
+      label: 'For women',
+      link: '/collections/for-women'
     },
     {
-      label: 'Brands',
-      link: '/'
+      label: 'For men',
+      link: '/collections/for-men'
     }
   ];
   const [menuOpened, setMenuOpened] = useState(false);

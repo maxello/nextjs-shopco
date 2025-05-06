@@ -57,7 +57,6 @@ const ProductList = async ({
       {isPaginated && totalCount > productsPerPage && products.length > 0 ? (
         <Pagination totalPages={totalPages} />)
       : null}
-      
     </div>
   );
 };

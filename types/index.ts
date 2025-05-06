@@ -35,4 +35,5 @@ export type FilterStateProps = {
   colors: string[];
   min: number;
   max: number;
+  name: string;
 }
