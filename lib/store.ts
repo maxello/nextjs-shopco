@@ -24,7 +24,7 @@ export const getProducts = async (categoryId: string, options: OptionsParams) =>
       .queryProducts()
       //.startsWith('name', name.toLowerCase())
       .eq("collectionIds", categoryId)
-      .gt("priceData.price", min || 0)
+      .ge("priceData.price", min || 0)
       .le("priceData.price", max || 999999)
 
     const result = await productQuery[sortType](sortBy)

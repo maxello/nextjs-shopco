@@ -174,7 +174,7 @@ const ProductsFilterForm = ({filterOptions, name}: {filterOptions: FilterProps, 
         </div>
       </div>
       <div className="overflow-x-auto px-5 flex flex-col gap-8 py-4">
-      {filterOptions?.price && (
+      {filterOptions?.price && filterState.min !== filterState.max && (
         <Accordion label={"Price"} isOpened={true}>
           <MultiRangeSlider
             min={filterOptions.price.min}

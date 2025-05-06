@@ -1,4 +1,5 @@
 [Demo](https://nextjs-shopco.vercel.app/)
+[About project](https://nextjs-shopco.vercel.app/about)
 
 ## Getting Started
 

@@ -21,25 +21,25 @@ export const getFilterValues = (products: Product[]): FilterProps => {
   for (const product of products) {
     const { productOptions = [], priceData } = product;
     console.log("product", product);
-    if (product.stock?.quantity && product.stock?.quantity > 0) {
+    // if (product.stock?.quantity && product.stock?.quantity > 0) {
       for (const productOption of productOptions) {
         const { name, choices = [] } = productOption;
 
         const normalizedName = name?.toLowerCase();
-
+        
         for (const choice of choices) {
           const { description, value } = choice;
           if (description && value) {
-            if (normalizedName === "size" && !filters.sizes.some((item) => item.description === choice.description)) {
+            if (normalizedName === "size" && choice.inStock && !filters.sizes.some((item) => item.description === choice.description)) {
               filters.sizes.push({ description, value });
             }
-            if (normalizedName === "color" && !filters.colors.some((item) => item.description === choice.description)) {
+            if (normalizedName === "color" && choice.inStock && !filters.colors.some((item) => item.description === choice.description)) {
               filters.colors.push({ description, value })
             }
           }
         }
       }
-    }
+    // }
     if (priceData?.discountedPrice) {
       if (!filters.price.min) {
         filters.price.min = priceData.discountedPrice;
