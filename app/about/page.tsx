@@ -63,7 +63,7 @@ const AboutPage = () => {
         </h1>
         <h2 className="text-2xl font-medium mb-2">Overview</h2>
         <p className="mb-8">
-          This resume project is an E-commerce shop specializing in clothing
+          This resume project is an E-commerce shop specialized in clothing
           sales, designed to provide users with a seamless shopping experience.
           The{" "}
           <a
